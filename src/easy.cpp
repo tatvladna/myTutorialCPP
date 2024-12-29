@@ -26,9 +26,15 @@ int runEasy () {
     if (DEBUG) {
         writeLog(titleFile);
     } 
+    // перехватываем mode из main.cpp
+    string *inputDelete = new string();
+    getline(std::cin, *inputDelete);
+    delete inputDelete;
     // ==================== start ==========================
 
-    cout << "Hello World" << endl;
+    // Задача 1: Организовать ввод двухзначного натурального числа с клавиатуры. 
+    // Программа должна определить наименьшую и наибольшую цифры, которые входят в состав данного натурального числа.
+
 
     // ==================== end ============================
     unsigned int endTime = clock();
