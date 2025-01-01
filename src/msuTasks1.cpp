@@ -254,7 +254,7 @@ class C9 {
 // Запрещаем передавать структуру с помощью delete
 struct mystr {
     int a, b;
-    mystr(const mystr& object) = delete;  // Запрещаем копирование при попытке передать объект структуры mystr
+    mystr(const mystr &object) = delete;  // Запрещаем копирование при попытке передать объект структуры mystr
 };
 
 int i = sizeof(mystr);
@@ -264,6 +264,17 @@ int i = sizeof(mystr);
 // }
 
 // 1.14
+struct smartstr {
+    std::string str;
+    smartstr(const std::string& str) {
+        this->str =str;
+    }
+    // Запрещаем создание массива в динамической памяти
+    void *operator new[](std::size_t) = delete;
+    void *operator new(std::size_t) = delete; 
+};
+smartstr smartobj ("hello");
+// smartstr* arr = new smartstr[10];  // Ошибка: использование оператора new[]
 
 
 int runMSUTasks1 () {
