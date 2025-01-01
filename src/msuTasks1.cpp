@@ -276,6 +276,18 @@ struct smartstr {
 smartstr smartobj ("hello");
 // smartstr* arr = new smartstr[10];  // Ошибка: использование оператора new[]
 
+//1.20
+struct W {
+    int x;
+    W(int a = 0) : x(a) { std::cout << 1; } // конструктор 
+    virtual ~W() { std::cout << 3; }        // виртуальный десктрутор
+};
+
+struct D : W {
+    D(int d) : W(d) { std::cout << 6; }
+    ~D() { std::cout << 4; }
+};
+
 
 int runMSUTasks1 () {
     string titleFile = "msuTasks1.cpp";
