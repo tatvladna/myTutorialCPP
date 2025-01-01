@@ -188,7 +188,7 @@ class A7 {
         return value;
     }
 };
-
+// 1.8
 class B8 {
     int value;
     public:
@@ -214,6 +214,27 @@ class B8 {
     }
 
 };
+
+//1.9
+class C9 {
+    int value;
+    public:
+    // конструктор с дефолтным значением
+    // запрещаю неявное объявление класса, чтобы избежать лишнего копирования
+    explicit C9(int value = 7) {
+        this->value = value;
+    }
+
+    //  оператор +
+    C9 operator+(const C9 &obj) const{
+        return C9(value + obj.value);
+    }
+    int get() const{
+        return value;
+    }
+
+};
+
 
 
 int runMSUTasks1 () {
@@ -269,6 +290,13 @@ int runMSUTasks1 () {
     B8 b1_8 (1), b2_8(2,3), b3_8 (b1_8);
     b1_8 += b2_8 += b3_8;
     cout << b1_8.get() << ' ' << b2_8.get() << ' ' << b3_8.get () << endl;
+
+
+    // 1.9
+    cout << "=================== Задача 1.9 ==================" << endl;
+    C9 c1_9(7), c2_9 (5), c3_9(c1_9 + c1_9);
+    cout << c1_9.get ( ) << ' ' << c3_9.get ( ) << endl;
+
 
 
 
