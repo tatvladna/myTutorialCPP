@@ -11,13 +11,17 @@ using namespace std;
 #include "./include/normal.h"
 #include "./include/hard.h"
 #include "./include/experienced.h"
+#include "./include/msuTasks1.h"
+#include "./include/msuTasks2.h"
 
 std::map<std::string, std::function<int()>> functionMap = {
         {"beginner", runBeginner},
         {"easy", runEasy},
         {"normal", runNormal},
         {"hard", runHard},
-        {"experienced", runExperienced}
+        {"experienced", runExperienced},
+        {"msuTasks1", runMSUTasks1},
+        {"msuTasks2", runMSUTasks2}
     };
 
 int main() {
@@ -34,6 +38,8 @@ int main() {
     std::cout<< "\t -normal" << endl ;
     std::cout<< "\t -hard" << endl ;
     std::cout<< "\t -experienced" << endl ;
+    std::cout<< "\t -msuTasks1" << endl ;
+    std::cout<< "\t -msuTasks2" << endl ;
     std::cin >> mode;
 
     if (functionMap.find(mode) != functionMap.end()) {

@@ -7,6 +7,8 @@ SOURCES = main.cpp $(SRC_DIR)/beginner.cpp \
 					$(SRC_DIR)/normal.cpp \
 					$(SRC_DIR)/hard.cpp \
 					$(SRC_DIR)/experienced.cpp \
+					$(SRC_DIR)/msuTasks1.cpp \
+					$(SRC_DIR)/msuTasks2.cpp \
 					$(UTILS_DIR)/help.cpp
 TARGET = myTasks
 all: $(TARGET)

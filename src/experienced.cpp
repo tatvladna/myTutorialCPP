@@ -19,7 +19,7 @@ using namespace std;
 
 
 int runExperienced () {
-    string titleFile = "easy.cpp";
+    string titleFile = "experienced.cpp";
     // SetConsoleCP(1251);
     // SetConsoleOutputCP(1251);
     unsigned int startTime = clock();

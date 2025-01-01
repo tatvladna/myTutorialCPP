@@ -1,7 +1,6 @@
 /*
-решение задач с сайта http://cppstudio.com/cat/285/289/
+решение задач с https://al.cs.msu.ru/system/files/CPP_Korukhova.pdf
 */
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -17,9 +16,8 @@
 using namespace std;
 #define DEBUG 1
 
-
-int runHard () {
-        string titleFile = "hard.cpp";
+int runMSUTasks2 () {
+    string titleFile = "msiTasks2.cpp";
     // SetConsoleCP(1251);
     // SetConsoleOutputCP(1251);
     unsigned int startTime = clock();
@@ -35,8 +33,5 @@ int runHard () {
     unsigned int resultTime = endTime - startTime;
     timeTime(resultTime);
     system("pause");
-
-
-
     return 0;
 }
