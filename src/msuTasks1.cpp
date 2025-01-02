@@ -288,6 +288,33 @@ struct D : W {
     ~D() { std::cout << 4; }
 };
 
+// 2. Перегрузка операций. Перегрузка функций
+
+class Cls {
+ int i;
+public:
+ Cls() { i = 1; }
+
+// void f(Cls * p, Cls * q) {
+//  *p = *q;
+    // удаляем оператор присваивания
+    Cls &operator=(const Cls&) = delete;
+    // // либо
+    // void operator= (const Cls &) {}
+};
+
+// 2.1
+void f(int);                        // для f(1)
+void f(char, char);                 // для f('+', '+')
+void f(double);                     // для f(2.3)
+void f(int, const char*);           // для f(3, "str")
+
+struct x {             // объявление структуры x.
+    int x;             // поле с именем x типа int.
+    operator int();    // пператор приведения типа к int.
+} x;                   // создание объекта структуры x.
+
+
 
 int runMSUTasks1 () {
     string titleFile = "msuTasks1.cpp";
@@ -356,6 +383,13 @@ int runMSUTasks1 () {
         C9 c1_9(7), c2_9 (5), c3_9(c1_9 + c1_9);
         cout << c1_9.get ( ) << ' ' << c3_9.get ( ) << endl;
     }
+
+    // 2.1
+    cout << "=================== Задача 2.1 ==================" << endl;
+
+    Cls cls1 ();
+    Cls cls2 ();
+    
 
 
 
