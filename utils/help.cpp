@@ -3,9 +3,11 @@
 #include <iostream>
 using namespace std;
 #include <ctime>
+#include <string>
+
+ofstream logFile("logger.log", ios::app);
 
 void writeLog (const string title) {
-    ofstream logFile("logger.log", ios::app);
     if (!logFile.is_open()) {
         return;
     }
@@ -16,10 +18,18 @@ void writeLog (const string title) {
 
 }
 
+void writeLogError (const string info) {
+    if (!logFile.is_open()) {
+        return;
+    }
+    logFile << info << endl;
+}
+
+
+
 void timeTime (unsigned int &t ) {
     try {
         t /= 1000.0; // перевод из млс в секунды
-        ofstream logFile("logger.log", ios::app);
         if (!logFile.is_open()) {
             throw "Error opening log file";
         }

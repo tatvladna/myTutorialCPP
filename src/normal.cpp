@@ -5,14 +5,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
-#include <cassert>
 #include "../include/help.h"
 #include "../include/normal.h"
-#include <cmath>
 #include <ctime>
 #include <clocale>
-#include <Windows.h>
+#include <stack>
 
 using namespace std;
 #define DEBUG 1
@@ -35,6 +32,47 @@ int runNormal () {
     // Задача 1: В текстовом файле, содержащем текст программы на языке Си, проверить соответствие открывающихся и закрывающихся фигурных скобок { и }. 
     // Результат проверки вывести на экран и записать в виде фразы в текстовый файл. 
     // Результат работы программы (вывод) поместить в отдельный текстовый файл (например, "out . txt " ), продублировав на экране.
+    cout<< "========================== Задача №1 ========================================="<< endl;
+    std::fstream myInputFileC("./data/input/randomTextC.txt");
+    std::ofstream myOutputFileC("./data/output/reportOutput.txt");
+    if (!myInputFileC.is_open()) {
+        writeLogError("Error: Файл с кодом на языке С не удалось открыт");
+    }
+
+    if (!myOutputFileC.is_open()) {
+        writeLogError("Error: Файл для вывода не удалось открыт");
+    }
+
+    std::string line;
+    std::stack<char> stackBrackets;
+    int lineNumber (0);
+    while(std::getline(myInputFileC, line)) {
+        lineNumber++;
+        for (char c : line) {
+            if (c == '{') {
+                stackBrackets.push('{');
+            } else if (c == '}') {
+                if (stackBrackets.empty()) {
+                    myOutputFileC << "Лишняя закрывающая '}' скобка в строке № "<< lineNumber << endl;
+                    myOutputFileC.close();
+                    break;
+                }
+                stackBrackets.pop(); // удаляем последнюю скобку
+            }
+        }
+    }
+
+    // в конце мы должны получить пусток стэк
+    if (!stackBrackets.empty()) {
+            myOutputFileC << "Лишняя открывающая '{' скобка"<< endl;
+            myOutputFileC.close();
+        }
+
+    if (myOutputFileC.is_open()) {
+        myOutputFileC << "Количество открывающихся скобок '{' == соответсвует количеству закрыающихся '}' ";
+        myOutputFileC.close();
+    }
+    myInputFileC.close();
 
 
 

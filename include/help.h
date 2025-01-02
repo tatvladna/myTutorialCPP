@@ -6,5 +6,6 @@
 
 void writeLog (const std::string title);
 void timeTime (unsigned int &t);
+void writeLogError (const std::string info);
 
 #endif
