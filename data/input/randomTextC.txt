@@ -1,4 +1,5 @@
-// рандомный код программы на языке С
+// рандомный код программы на языке С для анализа скобок { } 
+// результат можно видеть в папке data/output
 // взято отсюдо : https://proproprogs.ru/c_base/cpp-operatory-new-delete
 
 #include <iostream>

@@ -10,10 +10,14 @@
 #include <ctime>
 #include <clocale>
 #include <stack>
+#include <sstream>
+#include <stdexcept>
 
 using namespace std;
 #define DEBUG 1
 
+double calculateContinuedFraction(int n);
+int getIntInput(const std::string& prompt);
 
 int runNormal () {
     string titleFile = "normal.cpp";
@@ -32,7 +36,7 @@ int runNormal () {
     // Задача 1: В текстовом файле, содержащем текст программы на языке Си, проверить соответствие открывающихся и закрывающихся фигурных скобок { и }. 
     // Результат проверки вывести на экран и записать в виде фразы в текстовый файл. 
     // Результат работы программы (вывод) поместить в отдельный текстовый файл (например, "out . txt " ), продублировав на экране.
-    cout<< "========================== Задача №1 ========================================="<< endl;
+    cout<< "=============================== Задача №1 ========================================="<< endl;
     std::fstream myInputFileC("./data/input/randomTextC.txt");
     std::ofstream myOutputFileC("./data/output/reportOutput.txt");
     if (!myInputFileC.is_open()) {
@@ -72,11 +76,17 @@ int runNormal () {
         myOutputFileC << "Количество открывающихся скобок '{' == соответсвует количеству закрыающихся '}' ";
         myOutputFileC.close();
     }
+    cout << "Пожалуйста, посмотрите в файл в папке ./data/output" << endl;
     myInputFileC.close();
 
 
 
     // Задача 2: Используя показатели функции вычислить цепную дробь. Количество елементов дроби надо задавать с клавиатуры.
+    cout<< "=============================== Задача №2 ========================================="<< endl;
+    int n;
+    n = getIntInput("Введите целое число: ");
+    double result = calculateContinuedFraction(n);
+    cout << "Результат цепной дроби: " << result << endl;
 
 
     // Задача 3: Нужно вычислить произведение матрицы на вектор. В полученном векторе найти макисмальный  элемент. необходимо решить данную задачу тремя способами:
@@ -108,4 +118,28 @@ int runNormal () {
     timeTime(resultTime);
     system("pause");
     return 0;
+}
+
+
+double calculateContinuedFraction(int n) {
+    double result = 1.0;  // нач. значение дроби
+    for (int i = 0; i < n - 1; i++) {
+        result = 1.0 / (1.0 + result);  // Вычисление каждого элемента цепной дроби
+    }
+    return 1.0 + result;  // Добавление единицы в начале цепной дроби
+}
+
+int getIntInput(const std::string& prompt) {
+    int value;
+    std::string input;
+    while (true) {
+        std::cout << prompt;
+        std::getline(std::cin, input);
+        std::istringstream iss(input);
+        if (iss >> value && iss.eof() && value > 0) {
+            return value;
+        } else {
+            std::cout << "Некорректный ввод. Пожалуйста, введите целое положительное число.\n";
+        }
+    }
 }
